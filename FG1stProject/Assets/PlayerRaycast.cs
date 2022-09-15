@@ -18,7 +18,7 @@ public class PlayerRaycast : MonoBehaviour
     {
     
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             RaycastHit result;
             bool thereWasHit = Physics.Raycast(transform.position, transform.forward, out result, Mathf.Infinity);
