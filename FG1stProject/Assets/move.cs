@@ -6,7 +6,7 @@ public class Move : MonoBehaviour
     [SerializeField] private float speed = 2f;
     [SerializeField] private Rigidbody characterBody;
     [SerializeField] private LayerMask Ground;
-    [SerializeField] private Transform groundCheck;
+    
     void Update()
     {
         /*  Input teacher showed us on the first day of class
