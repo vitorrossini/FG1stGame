@@ -7,6 +7,8 @@ public class Move : MonoBehaviour
     [SerializeField] private Rigidbody characterBody;
     [SerializeField] private LayerMask Ground;
     [SerializeField] private int playerIndex;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform shootingStartPosition;
     
     void Update()
     {
@@ -40,6 +42,13 @@ public class Move : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.B) && IsTouchingFloor())  // if you press B AND player is touching the ground
             {
                 Jump();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                GameObject newProjectile = Instantiate(projectilePrefab);
+                newProjectile.transform.position = shootingStartPosition.position;
+                newProjectile.GetComponent<Projectile>().Initialize();
             }
         }
         /*  Input teacher showed us on the first day of class
