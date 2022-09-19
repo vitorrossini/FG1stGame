@@ -9,12 +9,13 @@ public class Move : MonoBehaviour
     [SerializeField] private int playerIndex;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
+    private int _timesShot = 0;
     
     void Update()
     {
         if (TurnManager.GetInstance().IsItPlayerTurn(playerIndex))
         {
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))  // i made this alone ayy! 
+           /* if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))  // i made this alone ayy! 
             {
                 transform.Translate(transform.right * speed * Time.deltaTime * -1); 
             
@@ -37,6 +38,8 @@ public class Move : MonoBehaviour
                 transform.Translate(transform.forward * speed * Time.deltaTime * -1);
             
             }
+            */
+            
         
 
             if (Input.GetKeyDown(KeyCode.B) && IsTouchingFloor())  // if you press B AND player is touching the ground
@@ -44,11 +47,9 @@ public class Move : MonoBehaviour
                 Jump();
             }
             
-            if (Input.GetKeyDown(KeyCode.V))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                GameObject newProjectile = Instantiate(projectilePrefab);
-                newProjectile.transform.position = shootingStartPosition.position;
-                newProjectile.GetComponent<Projectile>().Initialize();
+               Shoot();
             }
         }
         /*  Input teacher showed us on the first day of class
@@ -91,5 +92,20 @@ public class Move : MonoBehaviour
        return Physics.SphereCast(transform.position, 0.05f, -transform.up, out hit, 1f); // creates a sphere to check if it hits something
 
    }
+
+   private void Shoot()
+   {
+       GameObject newProjectile = Instantiate(projectilePrefab,shootingStartPosition.position, shootingStartPosition.rotation);
+      // newProjectile.transform.position = shootingStartPosition.position;
+       newProjectile.GetComponent<Projectile>().Initialize();
+       _timesShot++;
+       if (_timesShot >= 5 )
+       {
+           _timesShot =  0;
+           TurnManager.GetInstance().Changeturn();
+       }
+   }
+
    
+   //
 }

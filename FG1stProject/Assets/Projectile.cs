@@ -6,7 +6,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody projectileBody;
     [SerializeField] private GameObject damageIndicatorPrefab;
-    
+
+   
     private bool isActive;
 
 
@@ -41,7 +42,7 @@ public class Projectile : MonoBehaviour
            // GameObject damageIndicator = Instantiate(damageIndicatorPrefab);
           //  damageIndicator.transform.position = collision.GetContact(0);
           
-          TurnManager.GetInstance().Changeturn();
+         // TurnManager.GetInstance().Changeturn();
           
         }
         
