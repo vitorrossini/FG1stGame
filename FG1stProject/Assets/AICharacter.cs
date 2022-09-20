@@ -47,6 +47,8 @@ public class AICharacter : MonoBehaviour
          }
 
          agent.SetDestination(current.position);
+         
+         
      }
      
     }

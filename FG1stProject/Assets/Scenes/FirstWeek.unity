@@ -6331,6 +6331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1751268394}
   button: {fileID: 721480314}
+  saveButton: {fileID: 0}
+  loadButton: {fileID: 0}
   characterName: {fileID: 56056463}
 --- !u!1 &896152431 stripped
 GameObject:
@@ -6706,6 +6708,8 @@ GameObject:
   - component: {fileID: 1179782812}
   - component: {fileID: 1179782811}
   - component: {fileID: 1179782810}
+  - component: {fileID: 1179782819}
+  - component: {fileID: 1179782820}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -6753,6 +6757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e19de1174c4f643b5a19eb24cf9756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 0}
 --- !u!114 &1179782813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6773,6 +6778,8 @@ MonoBehaviour:
   playerIndex: 1
   projectilePrefab: {fileID: 314739015126891635, guid: dd96af4f4d2e63e4cb698d29eadb2bae, type: 3}
   shootingStartPosition: {fileID: 1499779967}
+  lineRenderer: {fileID: 1179782820}
+  playerTurn: {fileID: 1179782819}
 --- !u!65 &1179782814
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6872,6 +6879,33 @@ MonoBehaviour:
   walkingSpeed: 2
   playerIndex: 1
   pitchClamp: 90
+--- !u!114 &1179782819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179782809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218f768c9c233a04a8eebc57d022fa35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1179782820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179782809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a333ece894e3b4390f25f12fe1e26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 314739015126891635, guid: dd96af4f4d2e63e4cb698d29eadb2bae, type: 3}
+  stepCount: 10
+  lineRenderer: {fileID: 8842894648705314800, guid: ba1b23bf7d016e44dafb79be2c5a84d1, type: 3}
 --- !u!1 &1186614613
 GameObject:
   m_ObjectHideFlags: 0
@@ -7231,7 +7265,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22280
+  m_Name: pb_Mesh22284
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7761,6 +7795,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3110083c32595344d8fc1138bdbfcd52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerOne: {fileID: 1728919114}
+  playerTwo: {fileID: 1179782819}
+  timeBetweenTurns: 2
   cam0: {fileID: 593234202}
   cam1: {fileID: 30818087}
 --- !u!4 &1543211918
@@ -8078,6 +8115,8 @@ GameObject:
   - component: {fileID: 1728919105}
   - component: {fileID: 1728919104}
   - component: {fileID: 1728919111}
+  - component: {fileID: 1728919113}
+  - component: {fileID: 1728919114}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8113,6 +8152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e19de1174c4f643b5a19eb24cf9756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 0}
 --- !u!114 &1728919106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8133,6 +8173,8 @@ MonoBehaviour:
   playerIndex: 0
   projectilePrefab: {fileID: 314739015126891635, guid: dd96af4f4d2e63e4cb698d29eadb2bae, type: 3}
   shootingStartPosition: {fileID: 235510930}
+  lineRenderer: {fileID: 1728919113}
+  playerTurn: {fileID: 1728919114}
 --- !u!65 &1728919107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8244,6 +8286,33 @@ MonoBehaviour:
   walkingSpeed: 2
   playerIndex: 0
   pitchClamp: 90
+--- !u!114 &1728919113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728919103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a333ece894e3b4390f25f12fe1e26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 314739015126891635, guid: dd96af4f4d2e63e4cb698d29eadb2bae, type: 3}
+  stepCount: 10
+  lineRenderer: {fileID: 8842894648705314800, guid: ba1b23bf7d016e44dafb79be2c5a84d1, type: 3}
+--- !u!114 &1728919114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728919103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218f768c9c233a04a8eebc57d022fa35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1745608357
 PrefabInstance:
   m_ObjectHideFlags: 0

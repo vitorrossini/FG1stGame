@@ -9,11 +9,15 @@ public class Move : MonoBehaviour
     [SerializeField] private int playerIndex;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
+    [SerializeField] private TrajectoryLine lineRenderer;
+    [SerializeField] private PlayerTurn playerTurn;
     private int _timesShot = 0;
     
     void Update()
     {
-        if (TurnManager.GetInstance().IsItPlayerTurn(playerIndex))
+        bool IsPlayerTurn = playerTurn.IsPLayerTurn();
+        lineRenderer.enabled = IsPlayerTurn;
+        if (IsPlayerTurn)
         {
            /* if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))  // i made this alone ayy! 
             {
@@ -46,7 +50,9 @@ public class Move : MonoBehaviour
             {
                 Jump();
             }
-            
+
+            Vector3 force = transform.forward * 700f + transform.up * 300f;
+            lineRenderer.DrawCurvedTrajectory(force, shootingStartPosition.position);
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                Shoot();
@@ -102,7 +108,7 @@ public class Move : MonoBehaviour
        if (_timesShot >= 5 )
        {
            _timesShot =  0;
-           TurnManager.GetInstance().Changeturn();
+           TurnManager.GetInstance().TriggerChangeTurn();
        }
    }
 
