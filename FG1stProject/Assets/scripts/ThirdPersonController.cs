@@ -44,7 +44,7 @@ public class ThirdPersonController : MonoBehaviour
         }
     }
 
-    private void ReadRotationInput()
+    public void ReadRotationInput()
     {
         yaw += speedH * Input.GetAxis("Mouse X");
         pitch -= speedV * Input.GetAxis("Mouse Y");

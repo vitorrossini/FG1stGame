@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
     {
         isActive = true;
         projectileBody.AddForce(transform.forward * 700 + transform.up * 200);
-        GameObject.Destroy(gameObject, 1f);
+       // GameObject.Destroy(gameObject, 1f);
     }
     // Update is called once per frame
     void Update()
@@ -39,6 +39,7 @@ public class Projectile : MonoBehaviour
         if (destruction == null)                // if the result is NO
         {
             Destroy(collisionObject);
+            Destroy((this.gameObject));
            // GameObject damageIndicator = Instantiate(damageIndicatorPrefab);
           //  damageIndicator.transform.position = collision.GetContact(0);
           

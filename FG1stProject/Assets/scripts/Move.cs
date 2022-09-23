@@ -16,7 +16,7 @@ public class Move : MonoBehaviour
     void Update()
     {
         bool IsPlayerTurn = playerTurn.IsPLayerTurn();
-        lineRenderer.enabled = IsPlayerTurn;
+      //  lineRenderer.enabled = IsPlayerTurn;
         if (IsPlayerTurn)
         {
            /* if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))  // i made this alone ayy! 
@@ -52,8 +52,15 @@ public class Move : MonoBehaviour
             }
 
             Vector3 force = transform.forward * 700f + transform.up * 300f;
-            lineRenderer.DrawCurvedTrajectory(force, shootingStartPosition.position);
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+
+            if (Input.GetMouseButtonDown(0))
+
+            {
+                lineRenderer.DrawCurvedTrajectory(force, shootingStartPosition.position);
+            }
+            
+            
+            if (Input.GetMouseButtonUp(0))
             {
                Shoot();
             }
@@ -105,7 +112,7 @@ public class Move : MonoBehaviour
       // newProjectile.transform.position = shootingStartPosition.position;
        newProjectile.GetComponent<Projectile>().Initialize();
        _timesShot++;
-       if (_timesShot >= 5 )
+       if (_timesShot >= 1 )
        {
            _timesShot =  0;
            TurnManager.GetInstance().TriggerChangeTurn();
