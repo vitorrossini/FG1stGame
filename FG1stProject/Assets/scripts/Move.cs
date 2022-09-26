@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class Move : MonoBehaviour
 {
     
@@ -8,11 +9,20 @@ public class Move : MonoBehaviour
     [SerializeField] private LayerMask Ground;
     [SerializeField] private int playerIndex;
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform shootingStartPosition;
-    [SerializeField] private TrajectoryLine lineRenderer;
     [SerializeField] private PlayerTurn playerTurn;
-    private int _timesShot = 0;
+    [SerializeField] private Transform shootingStartPosition;
     
+
+
+
+
+    private int _timesShot = 0;
+
+
+    private void Start()
+    {
+
+    }
     void Update()
     {
         bool IsPlayerTurn = playerTurn.IsPLayerTurn();
@@ -51,19 +61,15 @@ public class Move : MonoBehaviour
                 Jump();
             }
 
-            Vector3 force = transform.forward * 700f + transform.up * 300f;
 
-            if (Input.GetMouseButtonDown(0))
 
+            if (Input.GetKeyUp(KeyCode.Mouse0))
             {
-                lineRenderer.DrawCurvedTrajectory(force, shootingStartPosition.position);
+                Shoot();
             }
-            
-            
-            if (Input.GetMouseButtonUp(0))
-            {
-               Shoot();
-            }
+
+
+           
         }
         /*  Input teacher showed us on the first day of class
         if (Input.GetAxis("Horizontal") != 0)
@@ -110,14 +116,14 @@ public class Move : MonoBehaviour
    {
        GameObject newProjectile = Instantiate(projectilePrefab,shootingStartPosition.position, shootingStartPosition.rotation);
       // newProjectile.transform.position = shootingStartPosition.position;
-       newProjectile.GetComponent<Projectile>().Initialize();
+       newProjectile.GetComponent<Projectile>().Initialize();     
        _timesShot++;
        if (_timesShot >= 1 )
        {
            _timesShot =  0;
            TurnManager.GetInstance().TriggerChangeTurn();
        }
-   }
+   }       
 
    
    //

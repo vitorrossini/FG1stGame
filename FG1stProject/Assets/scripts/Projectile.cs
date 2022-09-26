@@ -3,30 +3,38 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 10f;
     [SerializeField] private Rigidbody projectileBody;
     [SerializeField] private GameObject damageIndicatorPrefab;
 
    
     private bool isActive;
+    
+    
 
 
-    public void Initialize()
-    {
+    public void Initialize() 
+    { 
         isActive = true;
-        projectileBody.AddForce(transform.forward * 700 + transform.up * 200);
-       // GameObject.Destroy(gameObject, 1f);
+        
+         projectileBody.AddForce(transform.forward * 700 + transform.up * 200);
+        // GameObject.Destroy(gameObject, 1f);
     }
+    
     // Update is called once per frame
     void Update()
     {
+
+        
+        
         if (isActive)
         {
+
             // projectileBody.MovePosition(transform.position + transform.forward * speed * Time.deltaTime);
 
             // transform.Translate(transform.forward * speed * Time.deltaTime);
-
             
+
         }
 
     }
@@ -46,7 +54,7 @@ public class Projectile : MonoBehaviour
          // TurnManager.GetInstance().Changeturn();
           
         }
-        
+
         
     }
 }
