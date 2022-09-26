@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
-   private static PickupManager instance;
+   public static PickupManager instance;
    [SerializeField] GameObject pickupPrefab;
    private void Awake()
    {
-      if (instance = null)
+      if (instance == null)
       {
-         Instantiate(this);
+         instance = this;
       }
       else
       {
@@ -25,7 +25,7 @@ public class PickupManager : MonoBehaviour
    {
       if (Input.GetKeyDown(KeyCode.Space))
       {
-         GameObject newPickup = Instantiate(pickupPrefab);
+         GameObject newPickup = Instantiate(pickupPrefab);  // spawn when it reaches x turns (ask turn manager)
          newPickup.transform.position = new Vector3(Random.Range(0f,5f), 1f, Random.Range(0f, 5f));
       }
    }
